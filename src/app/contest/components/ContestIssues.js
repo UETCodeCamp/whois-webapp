@@ -6,8 +6,21 @@ class ContestIssues extends Component {
         issues: []
     }
 
+    _interval = null
+
     componentDidMount() {
         this._fetch()
+        this._refresh()
+    }
+
+    componentWillMount() {
+        this._interval && clearInterval(this._interval)
+    }
+
+    _refresh = () => {
+        this._interval = setInterval(() => {
+            this._fetch()
+        }, 5000)
     }
 
     _fetch = async () => {
@@ -37,7 +50,7 @@ class ContestIssues extends Component {
                             <div className="Task" key={_id}>
                                 <span className="Order">#{index + 1}</span>
                                 <span> </span>
-                                <span className="Name">{username}</span>
+                                <strong className="Name">{username}</strong>
                                 <span> - </span>
                                 <span className="Title">{title}</span>
                                 <span> - </span>
