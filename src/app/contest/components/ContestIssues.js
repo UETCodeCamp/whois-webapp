@@ -43,7 +43,7 @@ class ContestIssues extends Component {
                 <h3>Submitted</h3>
                 <div className="Issue">
                     {issues.map((issue, index) => {
-                        const {_id, camper, title, status} = issue
+                        const {_id, camper, title, status, message} = issue
                         const {username,} = Object.assign({}, camper)
 
                         return (
@@ -54,7 +54,12 @@ class ContestIssues extends Component {
                                 <span> - </span>
                                 <span className="Title">{title}</span>
                                 <span> - </span>
-                                <span>{status}</span>
+                                <span className="text-info">{status}</span>
+
+                                {
+                                    !!message &&
+                                        <span className="Message text-danger">{message}</span>
+                                }
                             </div>
                         )
                     })}

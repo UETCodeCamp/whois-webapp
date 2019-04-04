@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {getListTasks} from "../../../services/apis/ContestAPIServices"
+import moment from 'moment'
 
 class ContestTasks extends Component {
     state = {
@@ -43,8 +44,11 @@ class ContestTasks extends Component {
                 <h3>Top</h3>
                 <div className="Tasks">
                     {tasks.map((task, index) => {
-                        const {_id, camper, is_pass} = task
-                        const {username,} = Object.assign({}, camper)
+                        const {_id, camper, is_pass, updated} = task
+                        const {username} = Object.assign({}, camper)
+                        const className = is_pass ? 'text-success' : 'text-danger'
+                        const time = moment(updated)
+                        const timeAgo = time.fromNow()
 
                         return (
                             <div className="Task" key={_id}>
@@ -52,7 +56,9 @@ class ContestTasks extends Component {
                                 <span> </span>
                                 <strong className="Name">{username}</strong>
                                 <span> - </span>
-                                <span>{is_pass ? 'Passed' : 'Failed'}</span>
+                                <span className={className}>{is_pass ? 'Passed' : 'Failed'}</span>
+                                <span> - </span>
+                                <span>{timeAgo}</span>
                             </div>
                         )
                     })}

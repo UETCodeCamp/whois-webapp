@@ -30,12 +30,14 @@ class ContestDetail extends Component {
 
         return (
             <div className="ContestDetail">
-                <div className="DetailInner">
-                    <h1>{owner}/{repo}</h1>
-                </div>
+                <div className="container">
+                    <div className="DetailInner">
+                        <h1>{owner}/{repo}</h1>
+                    </div>
 
-                <ContestTasks id={id}/>
-                <ContestIssues id={id}/>
+                    <ContestTasks id={id}/>
+                    <ContestIssues id={id}/>
+                </div>
             </div>
         )
     }
