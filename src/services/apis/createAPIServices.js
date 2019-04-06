@@ -44,7 +44,7 @@ const _makeAuthRequest = createRequest => async (args) => {
 }
 
 export default (options = {}) => {
-    const baseUrlValidated = 'https://a347ecfd.ngrok.io'
+    const baseUrlValidated = 'http://localhost:2000'
     const instance = Axios.create({
         baseURL: baseUrlValidated,
         timeout: 30000,

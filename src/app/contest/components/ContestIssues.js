@@ -43,11 +43,11 @@ class ContestIssues extends Component {
                 <h3>Submitted</h3>
                 <div className="Issue">
                     {issues.map((issue, index) => {
-                        const {_id, camper, title, status, message} = issue
-                        const {username,} = Object.assign({}, camper)
+                        const {_id, github_id, camper, title, status, message} = issue
+                        const {username} = Object.assign({}, camper)
 
                         return (
-                            <div className="Task" key={_id}>
+                            <div className="Task" id={`issue-${github_id}`} key={_id}>
                                 <span className="Order">#{index + 1}</span>
                                 <span> </span>
                                 <strong className="Name">{username}</strong>
@@ -58,7 +58,7 @@ class ContestIssues extends Component {
 
                                 {
                                     !!message &&
-                                        <span className="Message text-danger">{message}</span>
+                                    <span className="Message text-danger">{message}</span>
                                 }
                             </div>
                         )
