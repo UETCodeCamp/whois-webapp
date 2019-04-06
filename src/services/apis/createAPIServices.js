@@ -44,7 +44,7 @@ const _makeAuthRequest = createRequest => async (args) => {
 }
 
 export default (options = {}) => {
-    const baseUrlValidated = 'http://localhost:2000'
+    const baseUrlValidated = 'https://api-fame.hackermind.dev'
     const instance = Axios.create({
         baseURL: baseUrlValidated,
         timeout: 30000,
