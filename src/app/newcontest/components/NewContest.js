@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {createNewContest} from '../../../services/apis/ContestAPIServices'
 import getHistory from "../../../store/getHistory"
+import {Link} from "react-router-dom"
 
 class NewContest extends Component {
 
@@ -65,7 +66,7 @@ class NewContest extends Component {
     render() {
         return (
             <div className="NewContest">
-                <div className="container col-6">
+                <div className="container col-md-6 col-sm-10">
                     <h1>New Contest</h1>
 
                     <div>
@@ -88,6 +89,10 @@ class NewContest extends Component {
                                 onClick={this._onSubmit}>
                             Submit
                         </button>
+
+                        <div className="btn-back text-center mt-3">
+                            <Link to={`/contests`}>Back to Contest List</Link>
+                        </div>
                     </div>
                 </div>
             </div>

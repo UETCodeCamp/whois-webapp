@@ -41,7 +41,7 @@ class ContestTasks extends Component {
 
         return (
             <div className="ContestTasks">
-                <h3>Top</h3>
+                <h4>Top</h4>
                 <div className="Tasks">
                     {tasks.map((task, index) => {
                         const {_id, camper, is_pass, updated} = task

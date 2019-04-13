@@ -1,2 +1,11 @@
 @import "~bootstrap/scss/bootstrap";
 @import "./test";
+
+.App {
+  padding: 40px;
+
+  h1 {
+    margin-bottom: 1em;
+  }
+
+}

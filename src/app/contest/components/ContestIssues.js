@@ -40,7 +40,7 @@ class ContestIssues extends Component {
 
         return (
             <div className="ContestIssues">
-                <h3>Submitted</h3>
+                <h4>Submitted</h4>
                 <div className="Issue">
                     {issues.map((issue, index) => {
                         const {_id, github_id, camper, title, status, message} = issue
