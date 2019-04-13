@@ -58,7 +58,7 @@ class ContestIssues extends Component {
                             const {username} = Object.assign({}, camper)
 
                             return (
-                                <tr>
+                                <tr key={`${_id}${github_id}`}>
                                     <td scope="row">{index + 1}</td>
                                     <td>{username}</td>
                                     <td>{title}</td>

@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {getListContests} from "../../../services/apis/ContestAPIServices"
-import {Link} from "react-router-dom"
 import moment from 'moment'
 import './ContestsPage.scss'
 import getHistory from "../../../store/getHistory"
