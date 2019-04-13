@@ -44,12 +44,8 @@ class ContestsPage extends Component {
                 <div className="container col-md-6 col-sm-10">
                     <h2>Contest List</h2>
                     <div className="my-card" onClick={this._goToCreateNewContest}>
-                        Create new Contest ... <i className="fas fa-chevron-right"/>
+                        Create new Contest ...
                     </div>
-                    {/*<button className="btn btn-primary btn-block"*/}
-                    {/*onClick={this._goToCreateNewContest}>*/}
-                    {/*Create new Contest ... <i className="fas fa-chevron-right"/>*/}
-                    {/*</button>*/}
                     {
                         contests.map(contest => {
                             const {_id, owner, repo, deadline, status} = contest
@@ -60,11 +56,10 @@ class ContestsPage extends Component {
                                     <div className="my-card" onClick={this._goToContestDetail(_id)}>
                                         <div className="name">{owner}/{repo}</div>
                                         <div className="deadline">
-                                            Dead line: <span className={isActive ? "time-in" : "time-out"}>
+                                            Dead line: <span className={isActive ? "text-info" : "text-danger"}>
                                             {moment(deadline).format('DD/MM/YYYY')}
                                             </span>
                                         </div>
-                                        <i className="fas fa-hourglass-half"/>
                                     </div>
                                 </div>
                             )

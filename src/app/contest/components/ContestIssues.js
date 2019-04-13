@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {getListIssues} from "../../../services/apis/ContestAPIServices"
+import ReactTooltip from 'react-tooltip'
 
 class ContestIssues extends Component {
     state = {
@@ -42,27 +43,36 @@ class ContestIssues extends Component {
             <div className="ContestIssues">
                 <h4>Submitted</h4>
                 <div className="Issue">
-                    {issues.map((issue, index) => {
-                        const {_id, github_id, camper, title, status, message} = issue
-                        const {username} = Object.assign({}, camper)
+                    <table className="table table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">FullName</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {issues.map((issue, index) => {
+                            const {_id, github_id, camper, title, status, message} = issue
+                            const {username} = Object.assign({}, camper)
 
-                        return (
-                            <div className="Task" id={`issue-${github_id}`} key={_id}>
-                                <span className="Order">#{index + 1}</span>
-                                <span> </span>
-                                <strong className="Name">{username}</strong>
-                                <span> - </span>
-                                <span className="Title">{title}</span>
-                                <span> - </span>
-                                <span className="text-info">{status}</span>
-
-                                {
-                                    !!message &&
-                                    <span className="Message text-danger">{message}</span>
-                                }
-                            </div>
-                        )
-                    })}
+                            return (
+                                <tr>
+                                    <td scope="row">{index + 1}</td>
+                                    <td>{username}</td>
+                                    <td>{title}</td>
+                                    <td>
+                                        <div data-for='enrich' data-tip={message}
+                                             className={message ? 'text-danger' : 'text-info'}>{status}
+                                        </div>
+                                        <ReactTooltip id='enrich' getContent={(dataTip) => dataTip}/>
+                                    </td>
+                                </tr>
+                            )
+                        })}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         )

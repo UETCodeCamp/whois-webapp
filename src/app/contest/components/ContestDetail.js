@@ -36,8 +36,11 @@ class ContestDetail extends Component {
             <div className="ContestDetail">
                 <div className="container">
                     <div className="DetailInner">
+                        <div className="mb-2">
+                            <i className="fas fa-angle-left"/> <Link to={`/contests`}>Back</Link>
+                        </div>
                         <h3>
-                            <Link to={`/contests`}>Contest List</Link>/{owner}/{repo}
+                            {owner}/{repo}
                         </h3>
                     </div>
 
