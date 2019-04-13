@@ -41,10 +41,18 @@ class ContestsPage extends Component {
         return (
             <div className="ContestsPage">
                 <div className="container col-md-6 col-sm-10">
-                    <h2>Contest List</h2>
-                    <div className="my-card" onClick={this._goToCreateNewContest}>
-                        Create new Contest ...
+                    <div className="title-container">
+                        <div className="title">
+                            <h2>Contest List</h2>
+                        </div>
+                        <div className="create-contest">
+                            <button type="button" className="btn btn btn-outline-dark"
+                                    onClick={this._goToCreateNewContest}>
+                                New Contest
+                            </button>
+                        </div>
                     </div>
+
                     {
                         contests.map(contest => {
                             const {_id, owner, repo, deadline, status} = contest

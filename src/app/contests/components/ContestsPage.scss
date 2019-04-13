@@ -14,6 +14,21 @@
   .my-card:hover {
     box-shadow: 0 0 5px rgba(33, 33, 33, .2);
   }
+
+  .title-container {
+    display: flex;
+    justify-content: space-between;
+    //align-items: center;
+
+    .title {
+      //flex: 5;
+    }
+
+    .create-contest {
+      //flex: 1;
+    }
+
+  }
 }
 
 .Contest {
