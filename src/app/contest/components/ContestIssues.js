@@ -49,28 +49,39 @@ class ContestIssues extends Component {
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Username</th>
-                            <th scope="col">Full Name</th>
+                            <th scope="col">Source</th>
                             <th scope="col">Status</th>
                             <th scope="col">Created date</th>
                         </tr>
                         </thead>
                         <tbody>
                         {issues.map((issue, index) => {
-                            const {_id, github_id, camper, title, status, message, created} = issue
+                            const {_id, github_id, camper, title, status, message, created, source} = issue
                             const {username} = Object.assign({}, camper)
+                            const sourceEl = !source ? title :
+                                <a href={source} target="_blank">
+                                    {title}
+                                </a>
+                            const classForStatus = status === 'pending' ?
+                                'text-black-50' :
+                                status === 'processed' && message ?
+                                    'text-danger' :
+                                    'text-info'
 
                             return (
                                 <tr key={`${_id}${github_id}`}>
                                     <td scope="row">{index + 1}</td>
                                     <td>{username}</td>
-                                    <td>{title}</td>
+                                    <td>
+                                        {sourceEl}
+                                    </td>
                                     <td>
                                         <div data-for='enrich' data-tip={message}
-                                             className={message ? 'text-danger' : 'text-info'}>{status}
+                                             className={classForStatus}>{status}
                                         </div>
                                         <ReactTooltip id='enrich' getContent={(dataTip) => dataTip}/>
                                     </td>
-                                    <td>{moment(created).format('DD/MM/YYYY')}</td>
+                                    <td>{moment(created).format('DD/MM/YYYY hh:mm:ss')}</td>
                                 </tr>
                             )
                         })}
