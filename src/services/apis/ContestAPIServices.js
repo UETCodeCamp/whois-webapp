@@ -34,3 +34,13 @@ export const getListTasks = (id) => {
     })
 }
 
+export const createNewContest = (contest, password) => {
+    return api.makeAuthRequest({
+        url: `/contests`,
+        method: 'POST',
+        headers: {
+            'x-password': password
+        },
+        data: contest
+    })
+}
