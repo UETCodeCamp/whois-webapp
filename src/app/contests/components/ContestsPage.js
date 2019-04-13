@@ -42,7 +42,7 @@ class ContestsPage extends Component {
         return (
             <div className="ContestsPage">
                 <div className="container col-md-6 col-sm-10">
-                    <h1>Contest List</h1>
+                    <h2>Contest List</h2>
                     <div className="my-card" onClick={this._goToCreateNewContest}>
                         Create new Contest ... <i className="fas fa-chevron-right"/>
                     </div>

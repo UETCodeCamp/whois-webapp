@@ -67,7 +67,7 @@ class NewContest extends Component {
         return (
             <div className="NewContest">
                 <div className="container col-md-6 col-sm-10">
-                    <h1>New Contest</h1>
+                    <h2>New Contest</h2>
 
                     <div>
                         <div className="form-group">
