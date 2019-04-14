@@ -39,7 +39,7 @@ class ContestTasks extends Component {
     _renderList = (tasks) => {
         return tasks.map((task, index) => {
             const {_id, camper, is_pass, updated} = task
-            const {username} = Object.assign({}, camper)
+            const {username, url} = Object.assign({}, camper)
             const className = is_pass ? 'text-success' : 'text-danger'
             const time = moment(updated)
             const timeAgo = time.fromNow()
@@ -47,7 +47,7 @@ class ContestTasks extends Component {
             return (
                 <tr key={`${_id}`}>
                     <td>{index + 1}</td>
-                    <td>{username}</td>
+                    <td><a href={url} target="_blank" rel="noopener noreferrer">{username}</a></td>
                     <td className={className}>
                         {is_pass ? 'Passed' : 'Failed'}
                     </td>
