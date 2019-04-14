@@ -51,7 +51,7 @@ class ContestIssues extends Component {
                             <th scope="col">Username</th>
                             <th scope="col">Source</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Created date</th>
+                            <th scope="col">Submitted at</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -62,11 +62,14 @@ class ContestIssues extends Component {
                                 <a href={source} target="_blank" rel="noopener noreferrer">
                                     {title}
                                 </a>
-                            const classForStatus = status === 'pending' ?
-                                'text-black-50' :
-                                status === 'processed' && message ?
-                                    'text-danger' :
-                                    'text-info'
+
+                            const statuses = {
+                                pending: 'text-info',
+                                processing: 'text-warning',
+                                processed: 'text-success'
+                            }
+
+                            const classForStatus = statuses[status] || 'text-info'
 
                             return (
                                 <tr key={`${_id}${github_id}`}>
