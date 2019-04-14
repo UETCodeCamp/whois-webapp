@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import {getListTasks} from "../../../services/apis/ContestAPIServices"
 import moment from 'moment'
-import ReactTooltip from "react-tooltip"
 
 class ContestTasks extends Component {
     state = {
@@ -37,8 +36,33 @@ class ContestTasks extends Component {
         }
     }
 
+    _renderList = (tasks) => {
+        return tasks.map((task, index) => {
+            const {_id, camper, is_pass, updated} = task
+            const {username} = Object.assign({}, camper)
+            const className = is_pass ? 'text-success' : 'text-danger'
+            const time = moment(updated)
+            const timeAgo = time.fromNow()
+
+            return (
+                <tr key={`${_id}`}>
+                    <td>{index + 1}</td>
+                    <td>{username}</td>
+                    <td className={className}>
+                        {is_pass ? 'Passed' : 'Failed'}
+                    </td>
+                    <td>
+                        {timeAgo}
+                    </td>
+                </tr>
+            )
+        })
+    }
+
     render() {
         const {tasks} = this.state
+        const passedTasks = tasks.filter(task => task.is_pass)
+        const failedTasks = tasks.filter(task => !task.is_pass)
 
         return (
             <div className="ContestTasks">
@@ -54,26 +78,8 @@ class ContestTasks extends Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {tasks.map((task, index) => {
-                            const {_id, camper, is_pass, updated} = task
-                            const {username} = Object.assign({}, camper)
-                            const className = is_pass ? 'text-success' : 'text-danger'
-                            const time = moment(updated)
-                            const timeAgo = time.fromNow()
-
-                            return (
-                                <tr key={`${_id}`}>
-                                    <td scope="row">{index + 1}</td>
-                                    <td>{username}</td>
-                                    <td className={className}>
-                                        {is_pass ? 'Passed' : 'Failed'}
-                                    </td>
-                                    <td>
-                                        {timeAgo}
-                                    </td>
-                                </tr>
-                            )
-                        })}
+                        {this._renderList(passedTasks)}
+                        {this._renderList(failedTasks)}
                         </tbody>
                     </table>
                 </div>

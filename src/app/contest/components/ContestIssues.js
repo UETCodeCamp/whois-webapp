@@ -59,7 +59,7 @@ class ContestIssues extends Component {
                             const {_id, github_id, camper, title, status, message, created, source} = issue
                             const {username} = Object.assign({}, camper)
                             const sourceEl = !source ? title :
-                                <a href={source} target="_blank">
+                                <a href={source} target="_blank" rel="noopener noreferrer">
                                     {title}
                                 </a>
                             const classForStatus = status === 'pending' ?
@@ -70,7 +70,7 @@ class ContestIssues extends Component {
 
                             return (
                                 <tr key={`${_id}${github_id}`}>
-                                    <td scope="row">{index + 1}</td>
+                                    <td>{index + 1}</td>
                                     <td>{username}</td>
                                     <td>
                                         {sourceEl}
