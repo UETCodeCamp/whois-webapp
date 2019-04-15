@@ -30,7 +30,7 @@ class ContestDetail extends Component {
     render() {
         const {id} = this.props
         const {detail} = this.state
-        const {owner, repo} = Object.assign({}, detail)
+        const {owner, repo, url} = Object.assign({}, detail)
 
         return (
             <div className="ContestDetail">
@@ -40,7 +40,7 @@ class ContestDetail extends Component {
                             <i className="fas fa-angle-left"/> <Link to={`/contests`}>Back</Link>
                         </div>
                         <h3>
-                            {owner}/{repo}
+                            <a href={url} target="_blank" rel="noopener noreferrer">{owner}/{repo}</a>
                         </h3>
                     </div>
 

@@ -4,21 +4,18 @@ import getHistory from "../../../store/getHistory"
 import {Link} from "react-router-dom"
 
 class NewContest extends Component {
-
-    constructor() {
-        super()
-        this.state = {
-            isValidData: false,
-            form: {
-                url: '',
-                deadline: '',
-            }
+    state = {
+        isValidData: false,
+        form: {
+            url: '',
+            runner: '',
+            deadline: '',
         }
     }
 
     _handleChange = (event) => {
-        const target = event.target;
-        const name = target.name;
+        const target = event.target
+        const name = target.name
         let form = {
             ...this.state.form,
             [name]: event.target.value
@@ -34,17 +31,17 @@ class NewContest extends Component {
             return
         }
 
-        let password = prompt('Please enter your password', '');
+        let password = prompt('Please enter your password', '')
         if (!password) {
             alert('Please enter your password')
-            return;
+            return
         }
 
         let body = {...this.state.form}
         const {success, message} = await createNewContest(body, password)
 
         if (success) {
-            console.log('success');
+            console.log('success')
             const history = getHistory()
             history.push('/contests')
         } else {
@@ -53,14 +50,13 @@ class NewContest extends Component {
     }
 
     _isValidData = () => {
-        const {url, deadline} = this.state.form;
-        console.log(this.state.form)
-        console.log(url)
-        console.log(deadline)
-        if (!url) return false;
-        if (!deadline) return false;
+        const {url, deadline, runner} = this.state.form
 
-        return true;
+        if (!url) return false
+        if (!deadline) return false
+        if (!runner) return false
+
+        return true
     }
 
     render() {
@@ -72,11 +68,19 @@ class NewContest extends Component {
                     <div>
                         <div className="form-group">
                             <input type="url" className="form-control"
-                                   placeholder="Url"
+                                   placeholder="Github repository url"
                                    name="url"
                                    value={this.state.form.url}
                                    onChange={this._handleChange}/>
                         </div>
+                        <div className="form-group">
+                            <input type="text" className="form-control"
+                                   placeholder="Runner name. For example: node-http"
+                                   name="runner"
+                                   value={this.state.form.runner}
+                                   onChange={this._handleChange}/>
+                        </div>
+
                         <div className="form-group">
                             <input type="text" className="form-control"
                                    placeholder="Deadline (dd/MM/yyyy)"
