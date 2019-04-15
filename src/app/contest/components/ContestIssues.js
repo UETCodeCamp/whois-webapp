@@ -42,7 +42,7 @@ class ContestIssues extends Component {
 
         return (
             <div className="ContestIssues">
-                <h4>Submitted</h4>
+                <p><i>Submitted request.</i></p>
                 <div className="Issue">
                     <table className="table table-hover">
                         <thead>
@@ -84,7 +84,7 @@ class ContestIssues extends Component {
                                         </div>
                                         <ReactTooltip id='enrich' getContent={(dataTip) => dataTip}/>
                                     </td>
-                                    <td>{moment(created).format('DD/MM/YYYY hh:mm:ss')}</td>
+                                    <td>{moment(created).format('DD/MM/YYYY HH:mm:ss')}</td>
                                 </tr>
                             )
                         })}

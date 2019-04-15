@@ -3,6 +3,8 @@ import {getContestDetail} from "../../../services/apis/ContestAPIServices"
 import ContestTasks from "./ContestTasks"
 import ContestIssues from "./ContestIssues"
 import {Link} from "react-router-dom"
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import "react-tabs/style/react-tabs.css";
 
 class ContestDetail extends Component {
     state = {
@@ -35,7 +37,7 @@ class ContestDetail extends Component {
         return (
             <div className="ContestDetail">
                 <div className="container">
-                    <div className="DetailInner">
+                    <div className="DetailInner mb-4">
                         <div className="mb-2">
                             <i className="fas fa-angle-left"/> <Link to={`/contests`}>Back</Link>
                         </div>
@@ -44,8 +46,19 @@ class ContestDetail extends Component {
                         </h3>
                     </div>
 
-                    <ContestTasks id={id}/>
-                    <ContestIssues id={id}/>
+                    <Tabs className="DetailTab">
+                        <TabList>
+                            <Tab>Top</Tab>
+                            <Tab>Submitted</Tab>
+                        </TabList>
+
+                        <TabPanel forceRender={true}>
+                            <ContestTasks id={id}/>
+                        </TabPanel>
+                        <TabPanel forceRender={true}>
+                            <ContestIssues id={id}/>
+                        </TabPanel>
+                    </Tabs>
                 </div>
             </div>
         )

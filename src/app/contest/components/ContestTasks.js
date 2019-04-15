@@ -66,7 +66,7 @@ class ContestTasks extends Component {
 
         return (
             <div className="ContestTasks">
-                <h4>Top</h4>
+                <p><i>Top student submitted.</i></p>
                 <div className="Tasks">
                     <table className="table table-hover">
                         <thead>
