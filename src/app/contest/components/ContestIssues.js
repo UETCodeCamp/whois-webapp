@@ -70,6 +70,7 @@ class ContestIssues extends Component {
                             }
 
                             const classForStatus = statuses[status] || 'text-info'
+                            const alert = message ? <i className="fas fa-exclamation-circle text-warning"/> : ''
 
                             return (
                                 <tr key={`${_id}${github_id}`}>
@@ -80,7 +81,7 @@ class ContestIssues extends Component {
                                     </td>
                                     <td>
                                         <div data-for='enrich' data-tip={message}
-                                             className={classForStatus}>{status}
+                                             className={classForStatus}>{status} {alert}
                                         </div>
                                         <ReactTooltip id='enrich' getContent={(dataTip) => dataTip}/>
                                     </td>
