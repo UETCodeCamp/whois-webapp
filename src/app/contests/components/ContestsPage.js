@@ -46,10 +46,9 @@ class ContestsPage extends Component {
                             <h2>Contest List</h2>
                         </div>
                         <div className="create-contest">
-                            <button type="button" className="btn btn btn-outline-dark"
-                                    onClick={this._goToCreateNewContest}>
+                            <div className="my-button" onClick={this._goToCreateNewContest}>
                                 New Contest
-                            </button>
+                            </div>
                         </div>
                     </div>
 

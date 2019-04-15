@@ -1,15 +1,19 @@
 .ContestsPage {
 
-  .card {
-    margin-bottom: 8px;
-  }
-
+  .my-button,
   .my-card {
     border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 0.25rem;
-    padding: 1rem;
     margin-bottom: 8px;
     cursor: pointer;
+  }
+
+  .my-button {
+    padding: .5rem;
+  }
+
+  .my-card {
+    padding: 1rem;
   }
   .my-card:hover {
     box-shadow: 0 0 5px rgba(33, 33, 33, .2);
@@ -18,16 +22,6 @@
   .title-container {
     display: flex;
     justify-content: space-between;
-    //align-items: center;
-
-    .title {
-      //flex: 5;
-    }
-
-    .create-contest {
-      //flex: 1;
-    }
-
   }
 }
 
