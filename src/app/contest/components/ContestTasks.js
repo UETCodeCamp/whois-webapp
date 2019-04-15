@@ -36,7 +36,7 @@ class ContestTasks extends Component {
         }
     }
 
-    _renderList = (tasks) => {
+    _renderList = (tasks, renderOrder = true) => {
         return tasks.map((task, index) => {
             const {_id, camper, is_pass, updated} = task
             const {username, url} = Object.assign({}, camper)
@@ -46,7 +46,7 @@ class ContestTasks extends Component {
 
             return (
                 <tr key={`${_id}`}>
-                    <td>{index + 1}</td>
+                    <td>{renderOrder ? index + 1 : '-'}</td>
                     <td><a href={url} target="_blank" rel="noopener noreferrer">{username}</a></td>
                     <td className={className}>
                         {is_pass ? 'Passed' : 'Failed'}
@@ -79,7 +79,7 @@ class ContestTasks extends Component {
                         </thead>
                         <tbody>
                         {this._renderList(passedTasks)}
-                        {this._renderList(failedTasks)}
+                        {this._renderList(failedTasks, false)}
                         </tbody>
                     </table>
                 </div>
